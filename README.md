@@ -57,16 +57,16 @@ Performed the following steps to ensure data quality:
 *  Checked for **NULL values** in key columns
   ```SQL
 SELECT
-SUM CASE WHEN "State" IS NULL THEN 1 ELSE END) AS null_state,
-SUM (CASE WHEN "City" IS NULL THEN 1 ELSE 0 END) AS null_city,
-SUM (CASE WHEN "Order Date" IS NULL THEN 1 ELSE END) AS null_order_date,
-SUM (CASE WHEN "Restaurant Name" IS NULL THEN 1 ELSE END) AS null restaurant,
-SUM (CASE WHEN "Location" IS NULL THEN 1 ELSE 0 END) AS null location,
-SUM (CASE WHEN "Category" IS NULL THEN 1 ELSE 0 END) AS null_category,
-SUM CASE WHEN "Dish Name" IS NULL THEN 1 ELSE 0 END) AS null_dish,
-SUM (CASE WHEN "Price (INR)" IS NULL THEN 1 ELSE 0 END) AS null_price,
-SUM (CASE WHEN "Rating" IS NULL THEN 1 ELSE 0 END) AS null_rating,
-SUM (CASE WHEN "Rating Count" IS NULL THEN 1 ELSE 0 END) AS null_rating_count
+SUM (CASE WHEN state IS NULL THEN 1 ELSE 0 END) AS null_state,
+SUM (CASE WHEN city IS NULL THEN 1 ELSE 0 END) AS null_city,
+SUM (CASE WHEN order_date IS NULL THEN 1 ELSE 0 END) AS null_order_date,
+SUM (CASE WHEN restaurant_name IS NULL THEN 1 ELSE 0 END) AS null_restaurant,
+SUM (CASE WHEN location IS NULL THEN 1 ELSE 0 END) AS null_location,
+SUM (CASE WHEN category IS NULL THEN 1 ELSE 0 END) AS null_category,
+SUM (CASE WHEN dish_name IS NULL THEN 1 ELSE 0 END) AS null_dish,
+SUM (CASE WHEN price_inr IS NULL THEN 1 ELSE 0 END) AS null_price,
+SUM (CASE WHEN rating IS NULL THEN 1 ELSE 0 END) AS null_rating,
+SUM (CASE WHEN rating_count IS NULL THEN 1 ELSE 0 END) AS null_rating_count
 FROM swiggy_data;
 ```
 *  Identified and handled **blank/empty strings**
@@ -75,12 +75,12 @@ FROM swiggy_data;
 SELECT *
 FROM swiggy_data
 WHERE
-"State" = '' 
-OR "City" = '' 
-OR "Restaurant_Name" = '' 
-OR "Location" = '' 
-OR "Category" = '' 
-OR "Dish_Name" = '';
+state = '' 
+OR city = '' 
+OR restaurant_name = '' 
+OR location = '' 
+OR category = '' 
+OR dish_name = '';
 ```
 *  Detected **duplicate records**
 ```SQL
